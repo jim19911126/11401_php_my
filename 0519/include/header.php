@@ -4,9 +4,9 @@
 <nav>
     <ul>
         <li><a href="index.php">首頁</a></li>
-        <li><a href="list.php">學生列表</a></li>
-        <li><a href="new.php">新增學生</a></li>
-        <li><a href="query.php">查詢學生</a></li>
-        <li><a href="about.php">關於</a></li>
+        <li><a href="index.php ?page=list">學生列表</a></li>
+        <li><a href="index.php ?page=new">新增學生</a></li>
+        <li><a href="index.php ?page=query">查詢學生</a></li>
+        <li><a href="index.php ?page=about">關於</a></li>
     </ul>
 </nav>
