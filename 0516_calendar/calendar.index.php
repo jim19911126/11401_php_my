@@ -28,9 +28,9 @@
             color:#aaa;
         }
         .holiday{
-            background-color:pink;
-            color:white;
+            color:black;
             font-size:12px;
+            text-align: center;
 
         }
         tr:not(tr:nth-child(1)) td:hover{
