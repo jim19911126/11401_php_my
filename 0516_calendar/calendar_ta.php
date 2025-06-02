@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>萬年曆</title>
+    <title>線上日曆</title>
     <style>
         h1{
             text-align:center;
-            color:lightseagreen;
+            color:blue;
         }
         table{
             min-width:60%;
@@ -28,9 +28,9 @@
             color:#aaa;
         }
         .holiday{
-            color:black;
+            background-color:pink;
+            color:white;
             font-size:12px;
-            text-align: center;
 
         }
         tr:not(tr:nth-child(1)) td:hover{
@@ -44,7 +44,7 @@
             color:#aaa;
         }
         .date-num{
-            font-size:16px;
+            font-size:14px;
             text-align:left;
         }
         .date-event{
@@ -105,7 +105,7 @@
 
 
 
- <h1>萬年曆</h1>  
+ <h1>線上日曆</h1>  
 
  <?php
 if(isset($_GET['month'])){
@@ -147,10 +147,10 @@ $spDate=[
     '2025-05-11'=>'母親節',
     '2025-05-01'=>'勞動節',
     '2025-05-30'=>'端午節',
-    '2025-11-26'=>"生日"
+    '2025-06-06'=>"生日"
 ];
 
-$todoList=[ '2025-09-23'=>'結訓'];
+$todoList=[ '2025-05-01'=>'開會'];
 
 $monthDays=[];
 
@@ -192,12 +192,14 @@ print_r($monthDays);
 echo "</pre>"; */
 ?>
 
-<div style="display: flex; width: 40%; margin: 0 auto; justify-content: space-between; align-items: center; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
-    <a href="?year=<?= $prevyear; ?>&month=<?= $prev; ?>">< 上個月</a>
-    <h2 style="margin: 0;"><?= $year; ?> 年 <?= $month; ?> 月</h2>
-    <a href="?year=<?= $nextyear; ?>&month=<?= $next; ?>">下一月 ></a>
+<div style="display:flex;width:60%;margin:0 auto;justify-content:space-between;">
+
+    <a href="?year=<?=$prevyear;?>&month=<?=$prev;?>">上一月</a>
+    <a href="?year=<?=$nextyear;?>&month=<?=$next;?>">下一月</a>
 </div>
-<br>
+
+<h2><?=$year;?>年<?=$month;?>月</h2>
+
 <?php
 
 //建立外框及標題
