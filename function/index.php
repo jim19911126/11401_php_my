@@ -35,9 +35,9 @@ dd($row);
 
 update("items", $row); */
 
-$data=['id'=>14,
-        'name'=>'豬排鐵板麵加蛋',
-       'cost'=>75,
-       'stock'=>30,
-       'price'=>105];
+$data=[
+        'name'=>'饅頭夾蛋',
+       'cost'=>20,
+       'stock'=>20,
+       'price'=>35];
 save('items',$data);

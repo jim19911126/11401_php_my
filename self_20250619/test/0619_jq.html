@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<!-- <style>
+    /* .menu {
+        position: relative;
+        width: 800px;
+        margin: 0 auto;
+        padding-bottom: 60px
+    }
+
+    table {
+        width: 100%;
+        max-width: 800px;
+        margin: 20px auto;
+        border-collapse: collapse;
+        font-family: "Helvetica Neue", sans-serif;
+        font-size: 16px;
+        background-color: antiquewhite;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    th,
+    td {
+        padding: 14px 18px;
+        text-align: center;
+        border-bottom: 1px solid #ddd5c7;
+    }
+
+    th {
+        background-color: #f7f1e3;
+        color: #5c4438;
+        font-weight: bold;
+        letter-spacing: 1px;
+    }
+
+    tr:hover {
+        background-color: #fdfaf4;
+    }
+
+    input {
+        width: 60px;
+        padding: 10px 14px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        background-color: #fffdf9;
+        color: #333;
+        transition: border-color 0.3s, box-shadow 0.3s;
+        box-sizing: border-box;
+        text-align: center;
+    }
+
+    button {
+        /* background: #fbca1f; */
+        font-family: inherit;
+        padding: 0.6em 1.3em;
+        font-weight: 900;
+        font-size: 12px;
+        border: 3px solid black;
+        border-radius: 0.4em;
+        box-shadow: 0.1em 0.1em;
+        cursor: pointer;
+
+    }
+
+    button:hover {
+        transform: translate(-0.05em, -0.05em);
+        box-shadow: 0.15em 0.15em;
+    }
+
+    button:active {
+        transform: translate(0.05em, 0.05em);
+        box-shadow: 0.05em 0.05em;
+    }
+
+    caption {
+        caption-side: top;
+        text-align: center;
+        padding: 10px;
+        font-size: 20px;
+        font-weight: bold;
+        color: #4e3e36;
+    }
+
+    .total-area {
+        position: absolute;
+        margin-top: 20px;
+        /* 根據你 <hr> 的位置做微調 */
+        right: 0;
+        background-color: #fffaf3;
+        padding: 15px 25px;
+        border: 2px solid #5c4438;
+        border-radius: 10px;
+        box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.15);
+        font-family: "Helvetica Neue", sans-serif;
+        font-size: 16px;
+        color: #5c4438;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        z-index: 9;
+    } */
+</style> -->
+
+<body>
+    <p>
+        <input type="text" class="price">
+    </p>
+    <p>
+        <button class="btn-total">+</button>
+    </p>
+    <p>
+        <input type="text" class="price">
+    </p>
+    <div class="total-area">
+        
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.btn-total').click(function () {
+                let sum = 0;
+
+
+                $('.price').each(function () {
+                    let value = $(this).val();      // 例如 "80"
+                    let num = Number(value) || 0;         // 轉成數字
+                    sum = Number(sum + num);                 // 加進總合
+                });
+
+                console.log('總合', sum);
+                $('.total-area').text('總合' + sum);
+            });
+        });
+
+    </script>
+
+
+</body>
+
+</html>

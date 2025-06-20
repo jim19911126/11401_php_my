@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form action="./data/store.php" method="get" id="myForm">
+        <p>
+            <input type="text" name="num1" class="num">
+        </p>
+        <p>
+            <button class="btn-total" type="submit">+</button>
+        </p>
+        <p>
+            <input type="text" name="num2" class="num">
+        </p>
+        <div class="total-area">
+
+        </div>
+    </form>
+
+    <!-- 載入jquery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <Script>
+        $(document).ready(function () {
+            const myForm = $('#myForm');
+
+
+
+            myForm.submit(function (e) {
+                e.preventDefault();
+                console.log('e', e);
+                const confirmed = confirm('是否送出?');
+                console.log('confirmed', confirmed);
+
+                if (!confirmed) {
+                    return false;
+                }
+
+                console.log('ok');
+                let sum = 0;
+                $('.num').each(function () {
+                    let value = $(this).val();      // 例如 "80"
+                    let num = Number(value) || 0;         // 轉成數字
+                    sum = Number(sum + num);                 // 加進總合
+                });
+
+                console.log('總合', sum);
+                $('.total-area').text('總合' + sum);
+
+                let url = "./data/store.php";
+                let data = $(this).serializeArray();
+                console.log('data', data);
+
+
+                $.ajax({
+                    type: "get",
+                    url: url,
+                    data: data,
+                    dataType: "json",
+                    success: function (response) {
+                        console.log('response', response);
+                        // console.log('response typeof', typeof (response));
+
+
+                    }
+                });
+            });
+
+        });
+    </Script>
+
+</body>
+
+</html>
