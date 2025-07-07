@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>新增學生</title>
+</head>
+
+<body>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f7f7fa;
+            margin: 0;
+            padding: 0;
+        }
+
+        .form-container {
+            background: #fff;
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 32px 24px 24px 24px;
+            border-radius: 10px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 24px;
+        }
+
+        .form-group {
+            margin-bottom: 12px;
+            display: flex;
+        }
+
+        label {
+            display: inline-block;
+            width: 20%;
+            margin-bottom: 6px;
+            color: #555;
+            font-weight: bold;
+            text-align-last: justify;
+            padding: 0 10px;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 80%;
+            padding: 8px 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+            background: #fafbfc;
+            transition: border 0.2s;
+        }
+
+        input:focus,
+        textarea:focus {
+            border-color: #4a90e2;
+            outline: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #4a90e2;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background 0.2s;
+        }
+
+        button:hover {
+            background: #357abd;
+        }
+    </style>
+    <div class="form-container">
+        <h2>新增學生資料</h2>
+        <form>
+            <div class="form-group">
+                <label for="uni_id">學號</label>
+                <input type="number" id="uni_id" name="uni_id" value="">
+            </div>
+            <div class="form-group">
+                <label for="name">姓名</label>
+                <input type="text" id="name" name="name" value="">
+            </div>
+            <div class="form-group">
+                <label for="national_id">身分證字號</label>
+                <input type="text" id="national_id" name="national_id" value="">
+            </div>
+            <div class="form-group">
+                <label for="birthday">生日</label>
+                <input type="date" id="birthday" name="birthday" value="">
+            </div>
+            <div class="form-group">
+                <label for="classname">班級</label>
+                <input type="text" id="classname" name="classname" value="">
+            </div>
+            <div class="form-group">
+                <label for="classroom">教室</label>
+                <input type="number" id="classroom" name="classroom" value="">
+            </div>
+            <div class="form-group">
+                <label for="seat_num">座號</label>
+                <input type="number" id="seat_num" name="seat_num" value="">
+            </div>
+            <div class="form-group">
+                <label for="major">主修科目</label>
+                <input type="text" id="major" name="major" value="">
+            </div>
+            <div class="form-group">
+                <label for="secondary">畢業國中</label>
+                <input type="text" id="secondary" name="secondary" value="">
+            </div>
+            <div class="form-group">
+                <label for="parent">家長姓名</label>
+                <input type="text" id="parent" name="parent" value="">
+            </div>
+            <div class="form-group">
+                <label for="telphone">電話</label>
+                <input type="tel" id="telphone" name="telphone" value="">
+            </div>
+            <div class="form-group">
+                <label for="address">地址</label>
+                <textarea id="address" name="address" rows="2"></textarea>
+            </div>
+            <button type="button" onclick="add()">送出</button>
+        </form>
+    </div>
+</body>
+
+</html>
+
+<script>
+    function add(params) {
+        let data = {
+            uni_id: $("#uni_id").val(),
+            name: $("#name").val(),
+            national_id: $("#national_id").val(),
+            birthday: $("#birthday").val(),
+            classroom: $("#classroom").val(),
+            seat_num: $("#seat_num").val(),
+            major: $("#major").val(),
+            secondary: $("#secondary").val(),
+            parent: $("#parent").val(),
+            telphone: $("#telphone").val(),
+            address: $("#address").val()
+        };
+
+        $.post("./api/add_student.php", data, function (res) {
+            console.log(data, res);
+            if (res.success) {
+                alert("新增成功");
+                location.href = "index.html"; // 返回主頁
+            } else {
+                alert("新增失敗：" + res.message);
+            }
+        });
+    }
+
+</script>
